@@ -1,16 +1,16 @@
-import React from 'react';
-import { StatusBar } from 'expo-status-bar';
+import React from 'react'
+import { StatusBar } from 'expo-status-bar'
 import { useSelector } from 'react-redux'
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native'
 
 const App = () => {
   const { appTitle } = useSelector(state => state)
-return (
-  <View style={styles.container}>
+  return (
+    <View style={styles.container}>
       <Text>{appTitle}</Text>
-      <StatusBar style="auto" />
+      <StatusBar style='auto' />
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -20,6 +20,6 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-});
+})
 
 export default App

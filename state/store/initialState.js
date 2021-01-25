@@ -1,5 +1,5 @@
 const initialState = {
-  appTitle: "weCare"
+  appTitle: 'weCare',
 }
 
 export default initialState
