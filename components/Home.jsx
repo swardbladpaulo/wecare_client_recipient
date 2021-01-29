@@ -7,7 +7,7 @@ import FoodBagService from "../modules/FoodBagService";
 
 
 const Home = ({ navigation }) => {
-  const { articles } = useSelector(state => state);
+  const { foodbags } = useSelector(state => state);
   useEffect(() => {
     FoodBagService.index();
   }, []);
@@ -15,10 +15,10 @@ const Home = ({ navigation }) => {
     <View style={styles.container}>
       <StatusBar style="auto" />
       <FlatList
-        data={articles}
+        data={foodbags}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <DisplayFoodBagList navigation={navigation} article={item} />
+          <DisplayFoodBagList navigation={navigation} foodbag={item} />
         )}
       />
     </View>

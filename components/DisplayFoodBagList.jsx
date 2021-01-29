@@ -21,9 +21,9 @@ const DisplayFoodBagList = ({ navigation, foodbag }) => {
       }}
     >
       <View style={styles.card}>
-        <Text style={styles.title}>{article.title}</Text>
-        <Text style={styles.lead}>{article.lead}</Text>
-        <Text style={styles.created}>{article.created}</Text>
+        <Text style={styles.title}>{foodbag.foodbag}</Text>
+        <Text style={styles.lead}>{foodbag.pickuptime}</Text>
+        <Text style={styles.created}>{foodbag.created}</Text>
       </View>
     </TouchableOpacity>
   );
