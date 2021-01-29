@@ -21,9 +21,9 @@ const App = () => {
             headerRight: () => {
               return (
                 <FontAwesome5
-                  name="bahai"
+                  name="id-card-alt"
                   size={24}
-                  color="white"
+                  color="#ffe8d4"
                   onPress={() => props.navigation.navigate('SignIn')}
                   style={{ marginRight: 15 }}
                 />
@@ -46,10 +46,10 @@ export default App
 
 const styles = {
   headerStyle: {
-    backgroundColor: 'purple',
+    backgroundColor: '#ce93b6',
   },
   headerTitleStyle: {
-    color: 'rgb(240,230,140)',
+    color: '#ffe8d4',
     fontSize: 25,
     fontWeight: 'bold',
   },
