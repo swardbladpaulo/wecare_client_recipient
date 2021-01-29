@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import Home from './components/Home'
 import { FontAwesome5 } from '@expo/vector-icons'
 import SignIn from './components/SignIn'
-
+import DisplayFoodBagList from './components/DisplayFoodBagList'
 
 const Stack = createStackNavigator()
 
@@ -15,28 +15,29 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="weCare"
+          name='weCare'
           component={Home}
           options={(props) => ({
             headerRight: () => {
               return (
                 <FontAwesome5
-                  name="id-card-alt"
+                  name='id-card-alt'
                   size={24}
-                  color="#ffe8d4"
+                  color='#ffe8d4'
                   onPress={() => props.navigation.navigate('SignIn')}
                   style={{ marginRight: 15 }}
                 />
               )
             },
             title: appHeader,
-            ...styles
+            ...styles,
           })}
         />
         <Stack.Screen
-          name="SignIn"
-          component={SignIn}
-        />
+          name='DisplayFoodBagList'
+          component={DisplayFoodBagList}
+        ></Stack.Screen>
+        <Stack.Screen name='SignIn' component={SignIn} />
       </Stack.Navigator>
     </NavigationContainer>
   )

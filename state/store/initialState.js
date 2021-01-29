@@ -1,6 +1,6 @@
 const initialState = {
   appTitle: 'weCare',
-  foodbag: [],
+  foodbags: [],
 }
 
 export default initialState

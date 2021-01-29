@@ -3,12 +3,12 @@ const rootReducer = (state, action) => {
     case 'FETCH_FOODBAG_INDEX':
       return {
         ...state,
-        foodbag: action.payload,
+        foodbags: action.payload,
       }
     /*next case goes here*/
   
     default:
-  }
   return state
+  }
 }
 export default rootReducer

@@ -40,7 +40,7 @@ class Auth {
         ? this.options.authUrl.validateToken
         : '/validate_token'
     }`
-    axios.interceptors.response.use(
+    axios.interceptors.response.user(
       (response) => {
         if (Array.isArray(response.data)) {
           return {
