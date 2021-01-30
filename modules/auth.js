@@ -2,8 +2,7 @@ import axios from 'axios'
 import store from '../state/store/store'
 import AsyncStorage from '@react-native-community/async-storage'
 
-const apiUrl =
-  process.env.NODE_ENV === 'development' && 'http://localhost:3000'
+const apiUrl = process.env.NODE_ENV === 'development' && 'http://localhost:3000'
 const defaultOptions = {
   host: apiUrl,
   mode: 'local',
@@ -17,15 +16,11 @@ class Auth {
   constructor(options) {
     this.options = { ...defaultOptions, ...options }
     this.roles = options.useRoles ? [] : undefined
-    this.apiUrl = `${options.host}${
-      options.prefixUrl ? options.prefixUrl : ''
-    }`
+    this.apiUrl = `${options.host}${options.prefixUrl ? options.prefixUrl : ''}`
     this.apiAuthUrl = `${this.apiUrl}${
       options.authUrl ? options.authUrl : '/auth'
     }`
-    this.emailInput = options.emailInput
-      ? options.emailInput
-      : 'email'
+    this.emailInput = options.emailInput ? options.emailInput : 'email'
     this.passwordField = options.passwordField
       ? options.passwordField
       : 'password'
@@ -139,12 +134,8 @@ class Auth {
   async setRoles(response) {
     if (this.options.useRoles) {
       try {
-        this.roles =
-          response && response.data ? response.data.roles : []
-        await storage.setItem(
-          storageRoleKey,
-          JSON.stringify(this.roles)
-        )
+        this.roles = response && response.data ? response.data.roles : []
+        await storage.setItem(storageRoleKey, JSON.stringify(this.roles))
       } catch (error) {
         console.log(error)
       }

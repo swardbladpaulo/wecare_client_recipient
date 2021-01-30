@@ -6,9 +6,7 @@ const DisplayFoodBagList = ({ navigation, foodbag }) => {
   const { credentials } = useSelector((state) => state)
 
   return (
-    <View
-    // style={styles.card}
-    >
+    <View>
       <Text style={styles.title}>{foodbag.status}</Text>
       <Text>{foodbag.pickuptime}</Text>
       <Text>{foodbag.created_at}</Text>

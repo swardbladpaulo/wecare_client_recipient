@@ -3,7 +3,8 @@ body {
   margin: 0;
   font-family: 'Raleway', sans-serif;
 }
-#header, #footer {
+#header,
+#footer {
   background: brown;
   height: 3em;
   font-size: 20px;
@@ -13,8 +14,9 @@ body {
 #footer {
   position: absolute;
   bottom: 0;
-  width: 100vW;
+  width: 100vw;
 }
-#display, form {
+#display,
+form {
   padding: 20px;
 }

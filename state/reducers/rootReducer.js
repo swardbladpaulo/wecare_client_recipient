@@ -5,10 +5,8 @@ const rootReducer = (state, action) => {
         ...state,
         foodbags: action.payload,
       }
-    /*next case goes here*/
-  
     default:
-  return state
+      return state
   }
 }
 export default rootReducer
