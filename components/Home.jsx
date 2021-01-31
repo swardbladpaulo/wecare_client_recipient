@@ -26,9 +26,13 @@ const Home = ({ navigation }) => {
 
 export default Home
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ebc1c4',
+const styles = {
+  headerStyle: {
+    backgroundColor: '#ce93b6',
   },
-})
+  headerTitleStyle: {
+    color: '#ffe8d4',
+    fontSize: 25,
+    fontWeight: 'bold',
+  },
+}
