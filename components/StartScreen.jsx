@@ -2,10 +2,10 @@ import React from 'react'
 import {
   Button,
   Dimensions,
-  Header,
   Image,
   StyleSheet,
   Text,
+  TouchableOpacity,
   View,
 } from 'react-native'
 import wecarelogo from '../assets/images/wecarelogo.png'
@@ -16,7 +16,7 @@ import donor3 from '../assets/images/donor3.png'
 const StartScreen = () => {
   return (
     <>
-      <View>
+      <View >
         <Image style={styles.image} source={wecarelogo} />
         <Text style={styles.topText}>Welcome to weCare, </Text>
         <Text style={styles.bodyText}>
@@ -32,7 +32,11 @@ const StartScreen = () => {
           <Image style={styles.storeImage} source={donor2} />
           <Image style={styles.storeImage} source={donor3} />
         </View>
-        <Button>Register Here</Button>
+        <View style={styles.parent}>
+          <TouchableOpacity activeOpacity={0.75} style={styles.button}>
+            <Text style={styles.text}>Register Here</Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </>
   )
@@ -42,7 +46,7 @@ export default StartScreen
 
 const styles = StyleSheet.create({
   topText: {
-    backgroundColor: '#f1c9d4',
+    backgroundColor: '#e5a4cb',
     fontSize: 35,
     color: 'white',
     textAlign: 'center',
@@ -73,19 +77,40 @@ const styles = StyleSheet.create({
     width: 80,
   },
   foodStore: {
-  flexDirection: 'row',  
-  justifyContent: 'space-evenly',
-  backgroundColor: 'white',
-  paddingTop: 10,
-  paddingBottom: 10,
+    flexDirection: 'row',
+    justifyContent: 'space-evenly',
+    backgroundColor: 'white',
+    paddingTop: 10,
+    paddingBottom: 10,
   },
-  partner: {
-    fontSize: 15,
-    backgroundColor: '#f1c9d4',
+    partner: {
+    fontSize: 25,
+    backgroundColor: '#e5a4cb',
     color: 'white',
     textAlign: 'center',
     fontWeight: 'bold',
     paddingBottom: 6,
     paddingTop: 6,
-  }
+  },
+ parent: {
+   backgroundColor: 'white',
+ },
+
+  button: {
+    flexDirection: 'row',
+    height: 65,
+    backgroundColor: '#7f055f',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 50,
+    elevation: 3,
+    margin: 39,
+    borderRadius: 20
+    
+  },
+  text: {
+    fontSize: 25,
+    fontWeight: 'bold',
+    color: 'white'
+  },
 })
