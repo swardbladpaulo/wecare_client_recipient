@@ -66,6 +66,7 @@ const styles = StyleSheet.create({
     color: 'black',
     textAlign: 'left',
     padding: 10,
+    paddingBottom: 15,
   },
   image: {
     height: 120,
@@ -80,7 +81,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-evenly',
     backgroundColor: 'white',
-    paddingTop: 10,
+    paddingTop: 30,
     paddingBottom: 10,
   },
     partner: {
