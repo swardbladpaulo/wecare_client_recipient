@@ -11,22 +11,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 
 const Stack = createStackNavigator()
 
-function HomeScreen() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Home!</Text>
-    </View>
-  )
-}
-
-function LogIn() {
-  return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Login</Text>
-    </View>
-  )
-}
-
 const Tab = createBottomTabNavigator()
 
 function MyTabs() {
@@ -41,6 +25,7 @@ function MyTabs() {
 export default function App() {
   return (
     <NavigationContainer>
+      {/* <StartScreen /> */}
       <MyTabs />
     </NavigationContainer>
   )
