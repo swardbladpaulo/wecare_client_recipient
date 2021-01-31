@@ -18,7 +18,7 @@ const StartScreen = () => {
     <>
       <View >
         <Image style={styles.image} source={wecarelogo} />
-        <Text style={styles.topText}>Welcome to weCare, </Text>
+        <Text style={styles.topText}>Welcome to weCare </Text>
         <Text style={styles.bodyText}>
           Here you can register for an account and find a foodbag near you!
         </Text>
@@ -46,13 +46,13 @@ export default StartScreen
 
 const styles = StyleSheet.create({
   topText: {
-    backgroundColor: '#e5a4cb',
+    backgroundColor: '#7f055f',
     fontSize: 35,
     color: 'white',
     textAlign: 'center',
     padding: 10,
     fontWeight: 'bold',
-    paddingBottom: 6,
+    paddingBottom: 10,
   },
   headerText: {
     backgroundColor: 'white',
@@ -63,10 +63,10 @@ const styles = StyleSheet.create({
   bodyText: {
     backgroundColor: 'white',
     fontSize: 20,
-    color: 'black',
+    color: '#4a4443',
     textAlign: 'left',
-    padding: 10,
-    paddingBottom: 15,
+    padding: 15,
+    paddingBottom: 20,
   },
   image: {
     height: 120,
@@ -74,8 +74,8 @@ const styles = StyleSheet.create({
     paddingBottom: 6,
   },
   storeImage: {
-    height: 80,
-    width: 80,
+    height: 90,
+    width: 90,
   },
   foodStore: {
     flexDirection: 'row',
@@ -86,12 +86,12 @@ const styles = StyleSheet.create({
   },
     partner: {
     fontSize: 25,
-    backgroundColor: '#e5a4cb',
+    backgroundColor: '#7f055f',
     color: 'white',
     textAlign: 'center',
     fontWeight: 'bold',
-    paddingBottom: 6,
-    paddingTop: 6,
+    paddingBottom: 10,
+    paddingTop: 10,
   },
  parent: {
    backgroundColor: 'white',
@@ -112,6 +112,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 25,
     fontWeight: 'bold',
-    color: 'white'
+    color: 'white',
   },
 })
