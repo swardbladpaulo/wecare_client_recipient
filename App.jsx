@@ -7,7 +7,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
 
 const Stack = createStackNavigator()
-
 const Tab = createBottomTabNavigator()
 
 function MyTabs() {
@@ -26,13 +25,11 @@ export default function App() {
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName
-
             if (route.name === 'Home') {
               iconName = focused ? 'home-outline' : 'home-outline'
             } else if (route.name === 'Log In') {
               iconName = focused ? 'person-outline' : 'person-outline'
             }
-
             return <Ionicons name={iconName} size={size} color={color} />
           },
         })}

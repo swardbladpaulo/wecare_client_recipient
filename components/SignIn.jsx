@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, Button } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 import Auth from '../modules/auth'
 
-const SingIn = props => {
+const SingIn = (props) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [message, setMessage] = useState()
@@ -16,7 +16,7 @@ const SingIn = props => {
         props.navigation.navigate('Hello')
         alert('Welcome!')
       })
-      .catch(error => {
+      .catch((error) => {
         setMessage(error.response.data.errors[0])
       })
   }
@@ -27,13 +27,13 @@ const SingIn = props => {
       <TextInput
         placeholder='Email'
         style={styles.input}
-        onChangeText={text => setEmail(text)}
+        onChangeText={(text) => setEmail(text)}
       />
       <TextInput
         secureTextEntry={true}
         placeholder='Password'
         style={styles.input}
-        onChangeText={text => setPassword(text)}
+        onChangeText={(text) => setPassword(text)}
       />
       <Button
         title='Sign-In'
