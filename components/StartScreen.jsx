@@ -51,6 +51,7 @@ const styles = StyleSheet.create({
     color: '#4a4443',
     textAlign: 'justify',
     padding: 25,
+    fontFamily: 'Helvetica'
   },
   image: {
     height: 120,
