@@ -5,7 +5,6 @@ import { TextInput } from 'react-native-gesture-handler'
 
 const RegisterForm = () => {
   // const [username, setUsername] = useState('')
-  // const [phonenumber, setPhonenumber] = useState('')
   // const [email, setEmail] = useState('')
   // const [password, setPassword] = useState('')
   // const [passwordconfirmation, setPasswordconfirmation] = useState()
@@ -13,7 +12,7 @@ const RegisterForm = () => {
 
   // const authenticateUser = () => {
   //   auth
-  //     .register(username, phonenumber, email, password, passwordconfirmation)
+  //     .register(username, email, password, passwordconfirmation)
   //     .then(() => {
   //       props.navigation.navigate('DisplayFoodBagsList')
   //       alert('Welcome!')
@@ -34,22 +33,14 @@ const RegisterForm = () => {
       />
       <TextInput
         style={styles.input}
-        placeholder='Phone Number:'
-        keyboardType='numeric'
-        autoCapitalize='none'
-        placeholderTextColor='white'
-        onChangeText={text => setPhonenumber(text)}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder='Email'
+        placeholder='Email:'
         autoCapitalize='none'
         placeholderTextColor='white'
         onChangeText={text => setEmail(text)}
       />
       <TextInput
         style={styles.input}
-        placeholder='Password'
+        placeholder='Password:'
         secureTextEntry={true}
         autoCapitalize='none'
         placeholderTextColor='white'
@@ -57,7 +48,7 @@ const RegisterForm = () => {
       />
       <TextInput
         style={styles.input}
-        placeholder='Password confirmation'
+        placeholder='Password confirmation:'
         secureTextEntry={true}
         autoCapitalize='none'
         placeholderTextColor='white'
