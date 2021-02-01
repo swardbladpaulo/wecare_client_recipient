@@ -5,6 +5,7 @@ import SignIn from './components/SignIn'
 import StartScreen from './components/StartScreen'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
+import RegisterForm from './components/RegisterForm'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -44,6 +45,8 @@ export default function App() {
           component={SignIn}
           onPress={() => props.navigation.navigate('SignIn')}
         />
+
+        <Stack.Screen name='RegisterForm' component={RegisterForm} />
       </Tab.Navigator>
     </NavigationContainer>
   )

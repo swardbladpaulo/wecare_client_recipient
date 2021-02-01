@@ -11,8 +11,9 @@ import logo2 from '../assets/images/logo2.png'
 import donor1 from '../assets/images/donor1.png'
 import donor2 from '../assets/images/donor2.png'
 import donor3 from '../assets/images/donor3.png'
+import RegisterForm from './RegisterForm'
 
-const StartScreen = () => {
+const StartScreen = ({ navigation }) => {
   return (
     <>
       <View>
@@ -31,7 +32,13 @@ const StartScreen = () => {
           will ensure the highest food quality
         </Text>
         <View style={styles.parent}>
-          <TouchableOpacity activeOpacity={0.75} style={styles.button}>
+          <TouchableOpacity
+            activeOpacity={0.75}
+            style={styles.button}
+            onPress={() => {
+              navigation.navigate('RegisterForm')
+            }}
+          >
             <Text style={styles.text}>Register Here</Text>
           </TouchableOpacity>
         </View>
