@@ -47,7 +47,6 @@ export default function App() {
           component={SignIn}
           onPress={() => props.navigation.navigate('SignIn')}
         />
-
         <Stack.Screen name='RegisterForm' component={RegisterForm} />
       </Tab.Navigator>
     </NavigationContainer>

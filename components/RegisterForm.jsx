@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
 
 const RegisterForm = () => {
@@ -9,22 +9,22 @@ const RegisterForm = () => {
         placeholder='Username:'
         autoCapitalize='none'
         placeholderTextColor='white'
-        onChangeText={val => this.onChangeText('username', val)}
+        onChangeText={text => setUsername(text)}
       />
-        <TextInput
-          style={styles.input}
-          placeholder='Phone Number:'
-          keyboardType='numeric'
-          autoCapitalize='none'
-          placeholderTextColor='white'
-          onChangeText={val => this.onChangeText('phone_number', val)}
-        />
+      <TextInput
+        style={styles.input}
+        placeholder='Phone Number:'
+        keyboardType='numeric'
+        autoCapitalize='none'
+        placeholderTextColor='white'
+        onChangeText={text => setPhonenumber(text)}
+      />
       <TextInput
         style={styles.input}
         placeholder='Email'
         autoCapitalize='none'
         placeholderTextColor='white'
-        onChangeText={val => this.onChangeText('email', val)}
+        onChangeText={text => setEmail(text)}
       />
       <TextInput
         style={styles.input}
@@ -32,7 +32,7 @@ const RegisterForm = () => {
         secureTextEntry={true}
         autoCapitalize='none'
         placeholderTextColor='white'
-        onChangeText={val => this.onChangeText('password', val)}
+        onChangeText={text => setPassword(text)}
       />
       <TextInput
         style={styles.input}
@@ -40,9 +40,14 @@ const RegisterForm = () => {
         secureTextEntry={true}
         autoCapitalize='none'
         placeholderTextColor='white'
-        onChangeText={val => this.onChangeText('password_confirmation', val)}
+        onChangeText={text => setPasswordconfirmation(text)}
       />
-      {/* <Button title='Sign Up' onPress={this.signUp} /> */}
+      <Button
+        style={styles.button}
+        color='#CC5095'
+        title='Register'
+        //onPress={() => authenticateUser()}
+      />
     </View>
   )
 }
@@ -65,5 +70,16 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  button: {
+    flexDirection: 'row',
+    height: 65,
+    backgroundColor: '#CC5095',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 40,
+    elevation: 3,
+    margin: 39,
+    borderRadius: 20,
   },
 })
