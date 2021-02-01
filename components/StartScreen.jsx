@@ -1,5 +1,5 @@
 import React from 'react'
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { Dimensions, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import logo2 from '../assets/images/logo2.png'
 import donor1 from '../assets/images/donor1.png'
 import donor2 from '../assets/images/donor2.png'
@@ -45,7 +45,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Helvetica',
   },
   image: {
+    paddingTop: 10,
     height: 120,
+    width: Dimensions.get("window").width,
   },
   storeImage: {
     height: 90,
@@ -66,7 +68,8 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
     paddingBottom: 10,
-    paddingTop: 10,
+    paddingTop: 15,
+    height: 60,
   },
   parent: {
     backgroundColor: 'white',
