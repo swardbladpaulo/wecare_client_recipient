@@ -17,7 +17,8 @@ const StartScreen = ({ navigation }) => {
   return (
     <>
       <View>
-        <Image style={styles.image} source={logo2} />
+        {/* <Text style={styles.appTitle}>weCare</Text> */}
+        {/* <Image style={styles.image} source={logo2} /> */}
         <Text style={styles.bodyText}>
           Here you can register for an account and find a foodbag near you!
         </Text>

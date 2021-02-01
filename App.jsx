@@ -6,6 +6,7 @@ import StartScreen from './components/StartScreen'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
 import RegisterForm from './components/RegisterForm'
+import { StyleSheet, Text } from 'react-native'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -22,6 +23,7 @@ function MyTabs() {
 export default function App() {
   return (
     <NavigationContainer>
+      <Text style={styles.appTitle}>weCare</Text>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -51,3 +53,15 @@ export default function App() {
     </NavigationContainer>
   )
 }
+const styles = StyleSheet.create({
+  appTitle: {
+    backgroundColor: '#CC5095',
+    fontSize: 40,
+    color: 'white',
+    textAlign: 'center',
+    paddingTop: 45,
+    padding: 25,
+    fontFamily: 'Helvetica',
+    fontWeight: 'bold',
+  },
+})
