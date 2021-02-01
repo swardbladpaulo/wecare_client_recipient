@@ -1,14 +1,6 @@
 import React from 'react'
-import {
-  Button,
-  Dimensions,
-  Image,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from 'react-native'
-import wecare_logo from '../assets/images/wecare_logo.png'
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import logo2 from '../assets/images/logo2.png'
 import donor1 from '../assets/images/donor1.png'
 import donor2 from '../assets/images/donor2.png'
 import donor3 from '../assets/images/donor3.png'
@@ -17,8 +9,7 @@ const StartScreen = () => {
   return (
     <>
       <View>
-        <Image style={styles.image} source={wecare_logo} />
-        {/* <Text style={styles.topText}>Welcome to weCare </Text> */}
+        <Image style={styles.image} source={logo2} />
         <Text style={styles.bodyText}>
           Here you can register for an account and find a foodbag near you!
         </Text>
@@ -51,7 +42,7 @@ const styles = StyleSheet.create({
     color: '#4a4443',
     textAlign: 'justify',
     padding: 25,
-    fontFamily: 'Helvetica'
+    fontFamily: 'Helvetica',
   },
   image: {
     height: 120,
@@ -70,7 +61,7 @@ const styles = StyleSheet.create({
   },
   partner: {
     fontSize: 25,
-    backgroundColor: '#d1619f',
+    backgroundColor: '#CC5095',
     color: 'white',
     textAlign: 'center',
     fontWeight: 'bold',
@@ -81,18 +72,16 @@ const styles = StyleSheet.create({
     backgroundColor: 'white',
     paddingBottom: 30,
   },
-
   button: {
     flexDirection: 'row',
     height: 65,
-    backgroundColor: '#d1619f',
+    backgroundColor: '#CC5095',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 40,
     elevation: 3,
     margin: 39,
     borderRadius: 20,
-  
   },
   text: {
     fontSize: 25,
