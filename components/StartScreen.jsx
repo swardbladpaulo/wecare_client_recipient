@@ -8,7 +8,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import wecarelogo from '../assets/images/wecarelogo.png'
+import wecare_logo from '../assets/images/wecare_logo.png'
 import donor1 from '../assets/images/donor1.png'
 import donor2 from '../assets/images/donor2.png'
 import donor3 from '../assets/images/donor3.png'
@@ -17,8 +17,8 @@ const StartScreen = () => {
   return (
     <>
       <View >
-        <Image style={styles.image} source={wecarelogo} />
-        <Text style={styles.topText}>Welcome to weCare </Text>
+        <Image style={styles.image} source={wecare_logo} />
+        {/* <Text style={styles.topText}>Welcome to weCare </Text> */}
         <Text style={styles.bodyText}>
           Here you can register for an account and find a foodbag near you!
         </Text>
@@ -46,7 +46,7 @@ export default StartScreen
 
 const styles = StyleSheet.create({
   topText: {
-    backgroundColor: '#7f055f',
+    backgroundColor: '#993576',
     fontSize: 35,
     color: 'white',
     textAlign: 'center',
@@ -86,7 +86,7 @@ const styles = StyleSheet.create({
   },
     partner: {
     fontSize: 25,
-    backgroundColor: '#7f055f',
+    backgroundColor: '#a34983',
     color: 'white',
     textAlign: 'center',
     fontWeight: 'bold',
@@ -100,7 +100,7 @@ const styles = StyleSheet.create({
   button: {
     flexDirection: 'row',
     height: 65,
-    backgroundColor: '#7f055f',
+    backgroundColor: '#993576',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 50,
