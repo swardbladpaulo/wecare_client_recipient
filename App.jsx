@@ -8,6 +8,7 @@ import { Ionicons } from '@expo/vector-icons'
 import RegisterForm from './components/RegisterForm'
 import { StyleSheet, Text } from 'react-native'
 import DisplayFoodBagsList from './components/DisplayFoodBagsList'
+import { FontAwesome5 } from '@expo/vector-icons'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -15,7 +16,10 @@ const Tab = createBottomTabNavigator()
 export default function App() {
   return (
     <NavigationContainer>
-      <Text style={styles.appTitle}>weCare</Text>
+      <Text style={styles.appTitle}>weCare<FontAwesome5
+                  name="heart"
+                  size={40}
+                  color="white"/></Text>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
