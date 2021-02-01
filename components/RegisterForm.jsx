@@ -1,14 +1,27 @@
 import React, { useState } from 'react'
 import { Button, StyleSheet, View } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
+// import Auth from '../modules/auth'
 
 const RegisterForm = () => {
-  const [username, setUsername] = useState('')
-  const [phonenumber, setPhonenumber] = useState('')
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
-  const [passwordconfirmation, setPasswordconfirmation] = useState()
-  const auth = new Auth({ host: 'https://weca.herokuapp.com/api' })
+  // const [username, setUsername] = useState('')
+  // const [phonenumber, setPhonenumber] = useState('')
+  // const [email, setEmail] = useState('')
+  // const [password, setPassword] = useState('')
+  // const [passwordconfirmation, setPasswordconfirmation] = useState()
+  // const auth = new Auth({ host: 'https://weca.herokuapp.com/api' })
+
+  // const authenticateUser = () => {
+  //   auth
+  //     .register(username, phonenumber, email, password, passwordconfirmation)
+  //     .then(() => {
+  //       props.navigation.navigate('DisplayFoodBagsList')
+  //       alert('Welcome!')
+  //     })
+  //     .catch((error) => {
+  //       setMessage(error.response.data.errors[0])
+  //     })
+  // }
 
   return (
     <View style={styles.container}>

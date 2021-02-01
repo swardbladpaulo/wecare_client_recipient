@@ -2,7 +2,7 @@ import React from 'react'
 import { StyleSheet, View, Text, Dimensions } from 'react-native'
 import { useSelector } from 'react-redux'
 
-const DisplayFoodBagList = ({ foodbag }) => {
+const DisplayFoodBag = ({ foodbag }) => {
   const { credentials } = useSelector((state) => state)
 
   return (
@@ -14,7 +14,7 @@ const DisplayFoodBagList = ({ foodbag }) => {
   )
 }
 
-export default DisplayFoodBagList
+export default DisplayFoodBag
 
 const styles = StyleSheet.create({
   card: {

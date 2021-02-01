@@ -86,6 +86,27 @@ class Auth {
       }
     })
   }
+  register(username, phonenumber, email, password, passwordconfirmation) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const registerResponse = await axios.post(this.registerUrl, {
+          [this.usernameInput]: username,
+          [this.phonenumberField]: phonenumber,
+          [this.emailInput]: email,
+          [this.passwordField]: password,
+          [this.passwordconfirmationField]: passwordconfirmation,
+        })
+        this.setSession(registerResponse.headers)
+        const validateResponse = await this.validateToken(
+          registerResponse.headers
+        )
+        this.setRoles(validateResponse)
+        resolve(validateResponse)
+      } catch (error) {
+        reject(error)
+      }
+    })
+  }
   validateToken(headers) {
     return new Promise(async (resolve, reject) => {
       try {

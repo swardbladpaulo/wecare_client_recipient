@@ -7,18 +7,10 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { Ionicons } from '@expo/vector-icons'
 import RegisterForm from './components/RegisterForm'
 import { StyleSheet, Text } from 'react-native'
+import DisplayFoodBagsList from './components/DisplayFoodBagsList'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
-
-function MyTabs() {
-  return (
-    <Tab.Navigator>
-      <Tab.Screen name='Home' component={StartScreen} />
-      <Tab.Screen name='Log in' component={SignIn} />
-    </Tab.Navigator>
-  )
-}
 
 export default function App() {
   return (
@@ -28,7 +20,7 @@ export default function App() {
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
             let iconName
-            if (route.name === 'Home') {
+            if (route.name === 'StartScreen') {
               iconName = focused ? 'home-outline' : 'home-outline'
             } else if (route.name === 'Log In') {
               iconName = focused ? 'person-outline' : 'person-outline'
@@ -41,12 +33,8 @@ export default function App() {
           inactiveTintColor: 'gray',
         }}
       >
-        <Tab.Screen name='Home' component={StartScreen} />
-        <Tab.Screen
-          name='Log In'
-          component={SignIn}
-          onPress={() => props.navigation.navigate('SignIn')}
-        />
+        <Tab.Screen name='StartScreen' component={StartScreen} />
+        <Tab.Screen name='DisplayFoodBagsList' component={DisplayFoodBagsList} />
         <Stack.Screen name='RegisterForm' component={RegisterForm} />
       </Tab.Navigator>
     </NavigationContainer>
