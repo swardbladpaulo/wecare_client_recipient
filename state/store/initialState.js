@@ -1,5 +1,4 @@
 const initialState = {
-  appTitle: 'weCare',
   foodbags: [],
 }
 

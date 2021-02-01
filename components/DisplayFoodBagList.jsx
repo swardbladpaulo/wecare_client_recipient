@@ -1,9 +1,9 @@
 import React from 'react'
-import { StyleSheet, View, Text, Dimensions, Image } from 'react-native'
+import { StyleSheet, View, Text, Dimensions } from 'react-native'
 import { useSelector } from 'react-redux'
 
-const DisplayFoodBagList = ({ navigation, foodbag }) => {
-  const { credentials } = useSelector((state) => state)
+const DisplayFoodBagList = ({ foodbag }) => {
+  const { credentials } = useSelector(state => state)
 
   return (
     <View>
