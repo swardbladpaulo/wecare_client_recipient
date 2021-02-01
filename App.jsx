@@ -22,7 +22,7 @@ export default function App() {
             let iconName
             if (route.name === 'StartScreen') {
               iconName = focused ? 'home-outline' : 'home-outline'
-            } else if (route.name === 'Log In') {
+            } else if (route.name === 'RegisterForm') {
               iconName = focused ? 'person-outline' : 'person-outline'
             }
             return <Ionicons name={iconName} size={size} color={color} />
