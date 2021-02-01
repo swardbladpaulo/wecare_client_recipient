@@ -1,7 +1,15 @@
 import React, { useState } from 'react'
-import { Button, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Button, StyleSheet, View } from 'react-native'
+import { TextInput } from 'react-native-gesture-handler'
 
 const RegisterForm = () => {
+  const [username, setUsername] = useState('')
+  const [phonenumber, setPhonenumber] = useState('')
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordconfirmation, setPasswordconfirmation] = useState()
+  const auth = new Auth({ host: 'https://weca.herokuapp.com/api' })
+
   return (
     <View style={styles.container}>
       <TextInput
