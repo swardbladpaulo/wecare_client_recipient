@@ -1,36 +1,34 @@
 import React, { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import Auth from '../modules/auth'
 import { Button, StyleSheet, View } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
-// import Auth from '../modules/auth'
 
-const RegisterForm = () => {
-  // const [username, setUsername] = useState('')
-  // const [email, setEmail] = useState('')
-  // const [password, setPassword] = useState('')
-  // const [passwordconfirmation, setPasswordconfirmation] = useState()
-  // const auth = new Auth({ host: 'https://weca.herokuapp.com/api' })
 
-  // const authenticateUser = () => {
-  //   auth
-  //     .register(username, email, password, passwordconfirmation)
-  //     .then(() => {
-  //       props.navigation.navigate('DisplayFoodBagsList')
-  //       alert('Welcome!')
-  //     })
-  //     .catch((error) => {
-  //       setMessage(error.response.data.errors[0])
-  //     })
-  // }
+const RegisterForm = ({navigation}) => {
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const [passwordconfirmation, setPasswordconfirmation] = useState('')
+  const auth = new Auth({ host: 'http://localhost:3000/api' })
+
+  const dispatch = useDispatch()
+  const{currentUser, registerErrorMessage} = useSelector(state => state)
+  
+  const authenticateUser = (navigation) => {
+    auth
+      .signUp({email: email, password: password, password_confirmation: passwordconfirmation})
+      .then(() => {
+        navigation.navigate('DisplayFoodBagsList')
+        alert('Welcome!')
+      })
+      .catch((error) => {
+        debugger
+        setMessage(error.response.data.errors[0])
+      })
+  }
 
   return (
     <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder='Username:'
-        autoCapitalize='none'
-        placeholderTextColor='white'
-        onChangeText={text => setUsername(text)}
-      />
       <TextInput
         style={styles.input}
         placeholder='Email:'
@@ -58,7 +56,7 @@ const RegisterForm = () => {
         style={styles.button}
         color='#CC5095'
         title='Register'
-        //onPress={() => authenticateUser()}
+        onPress={() => authenticateUser(navigation)}
       />
     </View>
   )
