@@ -11,8 +11,8 @@ const RegisterForm = ({navigation}) => {
   const [passwordconfirmation, setPasswordconfirmation] = useState('')
   const auth = new Auth({ host: 'http://localhost:3000/api' })
 
-  const dispatch = useDispatch()
-  const{currentUser, registerErrorMessage} = useSelector(state => state)
+  // const dispatch = useDispatch()
+  // const{currentUser, registerErrorMessage} = useSelector(state => state)
   
   const authenticateUser = (navigation) => {
     auth
@@ -22,7 +22,6 @@ const RegisterForm = ({navigation}) => {
         alert('Welcome!')
       })
       .catch((error) => {
-        debugger
         setMessage(error.response.data.errors[0])
       })
   }

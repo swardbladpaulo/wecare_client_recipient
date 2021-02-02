@@ -6,9 +6,9 @@ import DisplayFoodBag from './DisplayFoodBag'
 import FoodBagService from '../modules/FoodBagService'
 
 const DisplayFoodBagsList = ({ navigation }) => {
-  const { foodbags } = useSelector(state => state)
+  const { foodbags, credentials } = useSelector(state => state)
   useEffect(() => {
-    FoodBagService.index()
+    FoodBagService.index(credentials)
   }, [])
   return (
     <View style={styles.container}>
