@@ -1,8 +1,9 @@
 import axios from 'axios'
-import store from '../state/store/store'
 import AsyncStorage from '@react-native-community/async-storage'
+const apiUrl =
+  process.env.NODE_ENV === 'development' &&
+  'https://dream-time-news-api.herokuapp.com/api0'
 
-const apiUrl = process.env.NODE_ENV === 'development' && 'http://localhost:3000'
 const defaultOptions = {
   host: apiUrl,
   mode: 'local',
@@ -35,8 +36,8 @@ class Auth {
         ? this.options.authUrl.validateToken
         : '/validate_token'
     }`
-    axios.interceptors.response.user(
-      (response) => {
+    axios.interceptors.response.use(
+      response => {
         if (Array.isArray(response.data)) {
           return {
             ...response,
@@ -45,7 +46,7 @@ class Auth {
         }
         return response
       },
-      (error) => {
+      error => {
         return Promise.reject(error)
       }
     )
@@ -53,11 +54,11 @@ class Auth {
   test() {
     axios
       .get(this.signInUrl)
-      .then((response) => {
+      .then(response => {
         console.log(`Connection success: `)
         console.table(response.data)
       })
-      .catch((error) => {
+      .catch(error => {
         if (error.response) {
           console.log('Connection success')
         } else {
@@ -67,6 +68,23 @@ class Auth {
   }
   tokenHeaders() {
     return this.session
+  }
+  signUp(userFields, confirmSuccessUrl) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const signUpResponse = await axios.post(
+          this.apiAuthUrl,
+          {
+            ...userFields,
+          },
+          { params: { confirm_success_url: confirmSuccessUrl } }
+        )
+        this.setSession(signUpResponse.headers)
+        resolve(signUpResponse)
+      } catch (error) {
+        reject(error)
+      }
+    })
   }
   signIn(email, password) {
     return new Promise(async (resolve, reject) => {
@@ -86,6 +104,36 @@ class Auth {
       }
     })
   }
+  signOut() {
+    this.session = JSON.parse(storage.getItem(storageKey))
+    if (!this.session) throw 'No active session'
+    storage.removeItem(storageKey)
+    const lastSession = this.session
+    this.session = undefined
+    return new Promise(async (resolve, reject) => {
+      try {
+        const logOutResponse = await axios.delete(this.signOutUrl, {
+          headers: { ...lastSession },
+        })
+        resolve(logOutResponse.data)
+      } catch (err) {
+        resolve('Error when delete server session but local was deleted')
+      }
+    })
+  }
+  deleteResource() {
+    if (!this.session) throw 'No active session'
+    return new Promise(async (resolve, reject) => {
+      try {
+        const logOutResponse = await axios.delete(this.apiAuthUrl, {
+          headers: { ...this.session },
+        })
+        resolve(logOutResponse.data)
+      } catch (err) {
+        reject(err)
+      }
+    })
+  }
   validateToken(headers) {
     return new Promise(async (resolve, reject) => {
       try {
@@ -96,13 +144,89 @@ class Auth {
             'access-token': headers['access-token'],
           },
         })
-        store.dispatch({
-          type: 'SET_CREDENTIALS',
-          payload: response.headers,
-        })
         this.setSession(response.headers)
         resolve(response.data)
       } catch (err) {
+        reject(err)
+      }
+    })
+  }
+  changePassword(oldPassword, newPassword, newPasswordConfirmation) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const changePasswordResponse = await axios.put(
+          this.apiAuthUrl,
+          {
+            current_password: oldPassword,
+            password: newPassword,
+            password_confirmation: newPasswordConfirmation,
+          },
+          {
+            headers: { ...this.session },
+          }
+        )
+        this.setSession(changePasswordResponse.headers)
+        resolve(changePasswordResponse)
+      } catch (err) {
+        if (err.response.headers['access-token']) {
+          this.setSession(err.response.headers)
+        }
+        reject(err)
+      }
+    })
+  }
+  resetPassword(email, redirectUrl) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const resetPasswordResponse = await axios.post(
+          `${this.apiAuthUrl}/password`,
+          { email, redirect_url: redirectUrl }
+        )
+        this.debugIfActive(resetPasswordResponse)
+        resolve(resetPasswordResponse)
+      } catch (err) {
+        this.debugIfActive(err.response)
+        reject(err)
+      }
+    })
+  }
+  updatePasswordByToken(token, redirectUrl) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        const updatePassword = await axios.get(
+          `${this.apiAuthUrl}/password/edit`,
+          {
+            params: { reset_password_token: token, redirect_url: redirectUrl },
+          }
+        )
+        resolve(updatePassword)
+      } catch (err) {
+        reject(err)
+      }
+    })
+  }
+  privateRoute(url, options = {}) {
+    if (url[0] === '/') {
+      url = `${this.apiUrl}${url}`
+    }
+    return new Promise(async (resolve, reject) => {
+      try {
+        const reponse = await axios({
+          url,
+          method: options.method,
+          data: options.data,
+          params: options.params,
+          headers: {
+            ...options.headers,
+            ...this.session,
+          },
+        })
+        this.setSession(reponse.headers)
+        resolve(reponse)
+      } catch (err) {
+        if (err.response.headers['access-token']) {
+          this.setSession(err.response.headers)
+        }
         reject(err)
       }
     })
@@ -131,11 +255,41 @@ class Auth {
     this.session = { ...session }
     await storage.setItem(storageKey, JSON.stringify(session))
   }
+  async setLastSession() {
+    if (this.options.mode === 'local') {
+      await this.setLastLocalSession()
+    }
+    if (this.options.useRoles) {
+      await this.setLastRoles()
+    }
+  }
+  async setLastLocalSession() {
+    const lastSession = await storage.getItem(storageKey)
+    console.table(lastSession)
+    if (lastSession) {
+      try {
+        const headers = JSON.parse(lastSession)
+        this.setSession(headers)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
   async setRoles(response) {
     if (this.options.useRoles) {
       try {
         this.roles = response && response.data ? response.data.roles : []
         await storage.setItem(storageRoleKey, JSON.stringify(this.roles))
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+  async setLastRoles() {
+    const lastRoles = await storage.getItem(storageRoleKey)
+    if (lastRoles) {
+      try {
+        this.roles = JSON.parse(lastRoles)
       } catch (error) {
         console.log(error)
       }

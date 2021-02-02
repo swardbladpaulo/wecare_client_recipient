@@ -7,16 +7,14 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import logo2 from '../assets/images/logo2.png'
 import donor1 from '../assets/images/donor1.png'
 import donor2 from '../assets/images/donor2.png'
 import donor3 from '../assets/images/donor3.png'
 
-const StartScreen = () => {
+const StartScreen = ({ navigation }) => {
   return (
     <>
       <View>
-        <Image style={styles.image} source={logo2} />
         <Text style={styles.bodyText}>
           Here you can register for an account and find a foodbag near you!
         </Text>
@@ -31,7 +29,13 @@ const StartScreen = () => {
           will ensure the highest food quality
         </Text>
         <View style={styles.parent}>
-          <TouchableOpacity activeOpacity={0.75} style={styles.button}>
+          <TouchableOpacity
+            activeOpacity={0.75}
+            style={styles.button}
+            onPress={() => {
+              navigation.navigate('RegisterForm')
+            }}
+          >
             <Text style={styles.text}>Register Here</Text>
           </TouchableOpacity>
         </View>

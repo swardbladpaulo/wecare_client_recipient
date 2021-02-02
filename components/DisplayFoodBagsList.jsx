@@ -2,29 +2,29 @@ import React, { useEffect } from 'react'
 import { View, FlatList } from 'react-native'
 import { useSelector } from 'react-redux'
 import { StatusBar } from 'expo-status-bar'
-import DisplayFoodBagList from './DisplayFoodBagList'
+import DisplayFoodBag from './DisplayFoodBag'
 import FoodBagService from '../modules/FoodBagService'
 
-const Home = ({ navigation }) => {
-  const { foodbags } = useSelector((state) => state)
+const DisplayFoodBagsList = ({ navigation }) => {
+  const { foodbags, credentials } = useSelector(state => state)
   useEffect(() => {
-    FoodBagService.index()
+    FoodBagService.index(credentials)
   }, [])
   return (
     <View style={styles.container}>
       <StatusBar style='auto' />
       <FlatList
         data={foodbags}
-        keyExtractor={(item) => item.id.toString()}
+        keyExtractor={item => item.id.toString()}
         renderItem={({ item }) => (
-          <DisplayFoodBagList navigation={navigation} foodbag={item} />
+          <DisplayFoodBag navigation={navigation} foodbag={item} />
         )}
       />
     </View>
   )
 }
 
-export default Home
+export default DisplayFoodBagsList
 
 const styles = {
   headerStyle: {
