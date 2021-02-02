@@ -4,8 +4,7 @@ import Auth from '../modules/auth'
 import { Button, StyleSheet, Text, View } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 
-
-const RegisterForm = ({navigation}) => {
+const RegisterForm = ({ navigation }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordconfirmation, setPasswordconfirmation] = useState('')
@@ -13,10 +12,15 @@ const RegisterForm = ({navigation}) => {
 
   // const dispatch = useDispatch()
   // const{currentUser, registerErrorMessage} = useSelector(state => state)
-  
+
   const authenticateUser = (navigation) => {
     auth
-      .signUp({email: email, password: password, password_confirmation: passwordconfirmation})
+      .signUp({
+        email: email,
+        password: password,
+        password_confirmation: passwordconfirmation,
+        role: 1,
+      })
       .then(() => {
         navigation.navigate('DisplayFoodBagsList')
         alert('Welcome!')
@@ -34,7 +38,7 @@ const RegisterForm = ({navigation}) => {
         placeholder='Email:'
         autoCapitalize='none'
         placeholderTextColor='white'
-        onChangeText={text => setEmail(text)}
+        onChangeText={(text) => setEmail(text)}
       />
       <TextInput
         style={styles.input}
@@ -42,7 +46,7 @@ const RegisterForm = ({navigation}) => {
         secureTextEntry={true}
         autoCapitalize='none'
         placeholderTextColor='white'
-        onChangeText={text => setPassword(text)}
+        onChangeText={(text) => setPassword(text)}
       />
       <TextInput
         style={styles.input}
@@ -50,7 +54,7 @@ const RegisterForm = ({navigation}) => {
         secureTextEntry={true}
         autoCapitalize='none'
         placeholderTextColor='white'
-        onChangeText={text => setPasswordconfirmation(text)}
+        onChangeText={(text) => setPasswordconfirmation(text)}
       />
       <Button
         style={styles.button}
