@@ -11,13 +11,13 @@ import StartScreen from './components/StartScreen'
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
 
-export default function App() {
+const App = () => {
   return (
     <NavigationContainer>
-      <Text style={styles.appTitle}>weCare<FontAwesome5
-                  name="heart"
-                  size={40}
-                  color="white"/></Text>
+      <Text style={styles.appTitle}>
+        weCare
+        <FontAwesome5 name='heart' size={40} color='white' />
+      </Text>
       <Tab.Navigator
         screenOptions={({ route }) => ({
           tabBarIcon: ({ focused, color, size }) => {
@@ -36,12 +36,17 @@ export default function App() {
         }}
       >
         <Tab.Screen name='StartScreen' component={StartScreen} />
-        <Tab.Screen name='DisplayFoodBagsList' component={DisplayFoodBagsList}/>
+        <Tab.Screen
+          name='DisplayFoodBagsList'
+          component={DisplayFoodBagsList}
+        />
         <Stack.Screen name='RegisterForm' component={RegisterForm} />
       </Tab.Navigator>
     </NavigationContainer>
   )
 }
+export default App
+
 const styles = StyleSheet.create({
   appTitle: {
     backgroundColor: '#CC5095',

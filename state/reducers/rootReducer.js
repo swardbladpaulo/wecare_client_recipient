@@ -5,17 +5,17 @@ const rootReducer = (state, action) => {
         ...state,
         foodbags: action.payload,
       }
-      case 'SET_CURRENT_USER':
-        return {
-          ...state,
-          credentials: true,
-          currentUser: action.payload,
-        }
-        case 'REGISTER_ERROR_MESSAGE':
-          return {
-            ...state,
-            registerErrorMessage: action.payload,
-          }
+    case 'SET_CURRENT_USER':
+      return {
+        ...state,
+        credentials: true,
+        currentUser: action.payload,
+      }
+    case 'REGISTER_ERROR_MESSAGE':
+      return {
+        ...state,
+        registerErrorMessage: action.payload,
+      }
     default:
       return state
   }

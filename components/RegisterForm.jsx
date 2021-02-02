@@ -1,27 +1,26 @@
 import React, { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
 import Auth from '../modules/auth'
 import { Button, StyleSheet, Text, View } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 
-
-const RegisterForm = ({navigation}) => {
+const RegisterForm = ({ navigation }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordconfirmation, setPasswordconfirmation] = useState('')
   const auth = new Auth({ host: 'http://localhost:3000/api' })
 
-  // const dispatch = useDispatch()
-  // const{currentUser, registerErrorMessage} = useSelector(state => state)
-  
-  const authenticateUser = (navigation) => {
+  const authenticateUser = navigation => {
     auth
-      .signUp({email: email, password: password, password_confirmation: passwordconfirmation})
+      .signUp({
+        email: email,
+        password: password,
+        password_confirmation: passwordconfirmation,
+      })
       .then(() => {
         navigation.navigate('DisplayFoodBagsList')
         alert('Welcome!')
       })
-      .catch((error) => {
+      .catch(error => {
         setMessage(error.response.data.errors[0])
       })
   }
