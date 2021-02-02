@@ -7,18 +7,14 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native'
-import logo2 from '../assets/images/logo2.png'
 import donor1 from '../assets/images/donor1.png'
 import donor2 from '../assets/images/donor2.png'
 import donor3 from '../assets/images/donor3.png'
-import RegisterForm from './RegisterForm'
 
 const StartScreen = ({ navigation }) => {
   return (
     <>
       <View>
-        {/* <Text style={styles.appTitle}>weCare</Text> */}
-        {/* <Image style={styles.image} source={logo2} /> */}
         <Text style={styles.bodyText}>
           Here you can register for an account and find a foodbag near you!
         </Text>

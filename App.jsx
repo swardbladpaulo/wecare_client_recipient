@@ -1,14 +1,12 @@
 import React from 'react'
+import { StyleSheet, Text } from 'react-native'
 import { NavigationContainer } from '@react-navigation/native'
 import { createStackNavigator } from '@react-navigation/stack'
-import SignIn from './components/SignIn'
-import StartScreen from './components/StartScreen'
+import { Ionicons, FontAwesome5 } from '@expo/vector-icons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import { Ionicons } from '@expo/vector-icons'
-import RegisterForm from './components/RegisterForm'
-import { StyleSheet, Text } from 'react-native'
 import DisplayFoodBagsList from './components/DisplayFoodBagsList'
-import { FontAwesome5 } from '@expo/vector-icons'
+import RegisterForm from './components/RegisterForm'
+import StartScreen from './components/StartScreen'
 
 const Stack = createStackNavigator()
 const Tab = createBottomTabNavigator()
@@ -38,10 +36,7 @@ export default function App() {
         }}
       >
         <Tab.Screen name='StartScreen' component={StartScreen} />
-        <Tab.Screen
-          name='DisplayFoodBagsList'
-          component={DisplayFoodBagsList}
-        />
+        <Tab.Screen name='DisplayFoodBagsList' component={DisplayFoodBagsList}/>
         <Stack.Screen name='RegisterForm' component={RegisterForm} />
       </Tab.Navigator>
     </NavigationContainer>

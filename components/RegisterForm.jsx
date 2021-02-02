@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import Auth from '../modules/auth'
-import { Button, StyleSheet, View } from 'react-native'
+import { Button, StyleSheet, Text, View } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 
 
@@ -28,6 +28,7 @@ const RegisterForm = ({navigation}) => {
 
   return (
     <View style={styles.container}>
+      <Text style={styles.partner}>Register here</Text>
       <TextInput
         style={styles.input}
         placeholder='Email:'
@@ -90,5 +91,14 @@ const styles = StyleSheet.create({
     elevation: 3,
     margin: 39,
     borderRadius: 20,
+  },
+  partner: {
+    fontSize: 30,
+    color: '#CC5095',
+    textAlign: 'center',
+    fontWeight: 'bold',
+    paddingBottom: 10,
+    paddingTop: 15,
+    height: 60,
   },
 })
