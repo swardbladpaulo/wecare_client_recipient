@@ -3,7 +3,7 @@ import { StyleSheet, View, Text, Dimensions } from 'react-native'
 import { useSelector } from 'react-redux'
 
 const DisplayFoodBag = ({ foodbag }) => {
-  const { credentials } = useSelector(state => state)
+  const { credentials } = useSelector((state) => state)
 
   return (
     <View>

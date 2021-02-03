@@ -1,9 +1,7 @@
 import axios from 'axios'
 import AsyncStorage from '@react-native-community/async-storage'
 const apiUrl =
-  process.env.NODE_ENV === 'development' &&
-  'https://dream-time-news-api.herokuapp.com/api0'
-
+  process.env.NODE_ENV === 'development' && 'https://weca.herokuapp.com/api'
 const defaultOptions = {
   host: apiUrl,
   mode: 'local',
