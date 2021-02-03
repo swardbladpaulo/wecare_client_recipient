@@ -1,43 +1,48 @@
 import React from 'react'
-import { StyleSheet, View, Text, Dimensions } from 'react-native'
+import { Image, StyleSheet, View, Text, Dimensions } from 'react-native'
+import { Card, } from 'react-native-elements'
+import donor1 from '../assets/images/donor1.png'
 
 const DisplayFoodBag = ({ foodbag }) => {
   return (
-    <View>
-      <Text style={styles.title}>{foodbag.status}</Text>
-      <Text>{foodbag.pickuptime}</Text>
-      <Text>{foodbag.created_at}</Text>
-    </View>
+    <Card>
+      <Image style={styles.storeImage} source={donor1} />
+      <Card.Title style={styles.coName}>Company name</Card.Title>
+      <Text style={styles.coAdress}>Adress</Text>
+      <Text style={styles.coAdress}>ZipCode city</Text>
+      <Text style={styles.foodbagInfo}>Pickup Time: {foodbag.pickuptime}</Text>
+      <Text style={styles.foodbagInfo}>The bag is: {foodbag.status}</Text>    
+    </Card>
+    //   <View>
+    //     <Image source={{ uri: foodbag.image }} style={styles.indexImage} />
+    //     <Text style={styles.title}>{foodbag.status}</Text>
+    //     <Text>{foodbag.pickuptime}</Text>
+    //     <Text>{foodbag.created_at}</Text>
+    //   </View>
+    //
   )
 }
 
 export default DisplayFoodBag
 
 const styles = StyleSheet.create({
-  card: {
-    position: 'absolute',
-    width: Dimensions.get('window').width,
-    paddingLeft: 10,
-    paddingRight: 10,
-    bottom: 0,
-    backgroundColor: 'rgba(14, 13, 13, 0.6)',
-  },
-  title: {
-    backgroundColor: 'black',
+  coName: {
     fontSize: 20,
   },
-  lead: {
-    color: 'white',
-    fontSize: 16,
+  coAdress: {
+    fontSize: 15,
+    paddingBottom: 10,
   },
-  created: {
-    color: 'black',
-    fontSize: 12,
-    paddingBottom: 5,
-    paddingTop: 3,
+  foodbagInfo: {
+    fontSize: 18,
+    padding: 2,
+
   },
-  image: {
-    height: 250,
-    width: Dimensions.get('window').width,
+  storeImage: {
+    height: 60,
+    width: 60,
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 2,
   },
 })
