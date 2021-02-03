@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 8,
     color: 'white',
-    borderRadius: 14,
+    borderRadius: 13,
     fontSize: 18,
     fontWeight: '500',
   },
