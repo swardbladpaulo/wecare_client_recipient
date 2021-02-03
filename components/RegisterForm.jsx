@@ -3,24 +3,30 @@ import Auth from '../modules/auth'
 import { Button, StyleSheet, Text, View } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
 import AsyncStorage from '@react-native-community/async-storage'
+
 const RegisterForm = ({ navigation }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordconfirmation, setPasswordconfirmation] = useState('')
-  const auth = new Auth ({ host: 'http://localhost:3000/api' })
-  const authenticateUser =  navigation => {
-    auth 
+  const [message, setMessage] = useState()
+
+  const auth = new Auth({ host: 'http://localhost:3000/api' })
+
+  const authenticateUser = navigation => {
+    auth
       .signUp({
         email: email,
         password: password,
         password_confirmation: passwordconfirmation,
-        role: 'recipient'
+        role: 'recipient',
       })
-      .then( async () => {
+      .then(async response => {
+        await AsyncStorage.setItem(
+          'auth-storage',
+          JSON.stringify(response.headers)
+        )
         navigation.navigate('DisplayFoodBagsList')
         alert('Welcome!')
-        debugger
-        await AsyncStorage.setItem('auth-storage', JSON.stringify(response.headers))
       })
       .catch(error => {
         setMessage(error.response.data.errors[0])
@@ -58,6 +64,7 @@ const RegisterForm = ({ navigation }) => {
         title='Register'
         onPress={() => authenticateUser(navigation)}
       />
+      {message && <Text>{message}</Text>}
     </View>
   )
 }
