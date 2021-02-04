@@ -9,7 +9,6 @@ const RegisterForm = ({ navigation }) => {
   const [password, setPassword] = useState('')
   const [passwordconfirmation, setPasswordconfirmation] = useState('')
   const [message, setMessage] = useState()
-
   const auth = new Auth({ host: 'http://localhost:3000/api' })
 
   const authenticateUser = navigation => {
