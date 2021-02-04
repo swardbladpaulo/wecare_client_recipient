@@ -16,6 +16,11 @@ const rootReducer = (state, action) => {
         ...state,
         registerErrorMessage: action.payload,
       }
+    case 'UPDATE_FOODBAG_INDEX':
+      return {
+        ...state,
+        foodbags: action.payload,
+      }
     default:
       return state
   }
