@@ -31,7 +31,7 @@ const App = () => {
           },
         })}
         tabBarOptions={{
-          activeTintColor: '#CC5095',
+          activeTintColor: '#9370DB',
           inactiveTintColor: 'gray',
         }}
       >
@@ -49,7 +49,7 @@ export default App
 
 const styles = StyleSheet.create({
   appTitle: {
-    backgroundColor: '#CC5095',
+    backgroundColor: '#9370DB',
     fontSize: 40,
     color: 'white',
     textAlign: 'center',

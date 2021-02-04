@@ -15,7 +15,7 @@ const FoodBagService = {
     })
   },
 
-  async update(event, foodbag, dispatch) {
+  async update(foodbag) {
     const headers = JSON.parse(await AsyncStorage.getItem('auth-storage'))
     let response = await axios.put(
       API_URL + `/foodbags/${foodbag.id}`,

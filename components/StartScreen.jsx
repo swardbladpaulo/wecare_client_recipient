@@ -18,7 +18,7 @@ const StartScreen = ({ navigation }) => {
         <Text style={styles.bodyText}>
           Here you can register for an account and find a foodbag near you!
         </Text>
-        <Text style={styles.partner}>Our partners</Text>
+        <Text style={styles.partner}>Our Partners</Text>
         <View style={styles.foodStore}>
           <Image style={styles.storeImage} source={donor1} />
           <Image style={styles.storeImage} source={donor2} />
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
   partner: {
     fontSize: 25,
-    backgroundColor: '#CC5095',
+    backgroundColor: '#baa3e8',
     color: 'white',
     textAlign: 'center',
     fontWeight: 'bold',
@@ -89,7 +89,7 @@ const styles = StyleSheet.create({
   button: {
     flexDirection: 'row',
     height: 65,
-    backgroundColor: '#CC5095',
+    backgroundColor: '#8FBC8F',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 40,

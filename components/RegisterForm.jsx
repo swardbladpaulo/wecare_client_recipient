@@ -57,9 +57,9 @@ const RegisterForm = ({ navigation }) => {
         placeholderTextColor='white'
         onChangeText={text => setPasswordconfirmation(text)}
       />
-      <Button
+      <Button type="solid"
         style={styles.button}
-        color='#CC5095'
+        color='#8FBC8F'
         title='Register'
         onPress={() => authenticateUser(navigation)}
       />
@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
   input: {
     width: 350,
     height: 55,
-    backgroundColor: '#CC5095',
+    backgroundColor: '#9370DB',
     margin: 10,
     padding: 8,
     color: 'white',
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
   button: {
     flexDirection: 'row',
     height: 65,
-    backgroundColor: '#CC5095',
+    backgroundColor: '#9370DB',
     alignItems: 'center',
     justifyContent: 'center',
     marginTop: 40,
@@ -98,7 +98,7 @@ const styles = StyleSheet.create({
   },
   partner: {
     fontSize: 30,
-    color: '#CC5095',
+    color: '#9370DB',
     textAlign: 'center',
     fontWeight: 'bold',
     paddingBottom: 10,

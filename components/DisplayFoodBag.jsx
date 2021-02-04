@@ -3,19 +3,19 @@ import { Image, StyleSheet, Text, Switch, SafeAreaView } from 'react-native'
 import { Card } from 'react-native-elements'
 import donor1 from '../assets/images/donor1.png'
 import { useDispatch } from 'react-redux'
-import FoodbagService from '../modules/FoodBagService'
+// import FoodbagService from '../modules/FoodBagService'
 
 const DisplayFoodBag = ({ foodbag }) => {
   const dispatch = useDispatch()
   const [switchValue, setSwitchValue] = useState(false)
 
-  const toggleSwitch = (value) => {
-    FoodbagService(foodbag, dispatch)
+  const toggleSwitch = foodbag => {
+    // FoodbagService(foodbag, dispatch)
     //onValueChange of the switch this function will be called
-    setSwitchValue(value);
+    setSwitchValue(foodbag)
     //state changes according to switch
     //which will result in re-render the text
-  };
+  }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -25,20 +25,21 @@ const DisplayFoodBag = ({ foodbag }) => {
           {foodbag.company_name}Company name
         </Card.Title>
         <Text style={styles.coAdress}>Adress</Text>
-        <Text style={styles.coAdress}>ZipCode city</Text>
+        <Text style={styles.coAdress}>ZipCode City</Text>
+        <Card.Divider />
+        <Text style={styles.foodbagInfo}>This bag is {foodbag.status}</Text>
         <Text style={styles.foodbagInfo}>
-          Pickup this: {foodbag.pickuptime}
+          Pickup in the {foodbag.pickuptime}
         </Text>
-        <Text style={styles.foodbagInfo}>The bag is: {foodbag.status}</Text>
-        <Text style={styles.foodbagReserve}>
-          Reserve this bag:{' '}
-          <Switch
-            trackColor={{ false: 'grey', true: 'blue' }}
-            onValueChange={toggleSwitch}
-            value={switchValue}
-          />
+        <Text style={styles.foodbagReserve}>Reserve this bag:</Text>
+        <Switch
+          trackColor={{ false: 'red', true: '#8FBC8F' }}
+          onValueChange={toggleSwitch}
+          value={switchValue}
+        />
+        <Text style={styles.toggle}>
+          {switchValue ? 'Your bag has been reserved' : ''}
         </Text>
-        <Text>{switchValue ? 'Switch is ON' : 'Switch is OFF'}</Text>
       </Card>
     </SafeAreaView>
   )
@@ -47,6 +48,13 @@ const DisplayFoodBag = ({ foodbag }) => {
 export default DisplayFoodBag
 
 const styles = StyleSheet.create({
+  storeImage: {
+    height: 60,
+    width: 60,
+    borderRadius: 20,
+    padding: 10,
+    marginBottom: 2,
+  },
   coName: {
     fontSize: 20,
   },
@@ -57,16 +65,22 @@ const styles = StyleSheet.create({
   foodbagInfo: {
     fontSize: 18,
     padding: 2,
-  },
-  storeImage: {
-    height: 60,
-    width: 60,
-    borderRadius: 20,
-    padding: 10,
     marginBottom: 2,
   },
   foodbagReserve: {
     fontSize: 20,
-    color: 'blue',
+    color: '#9370DB',
+    marginBottom: 5,
+    fontWeight: 'bold',
+  },
+  pickuptime: {
+    fontSize: 20,
+    color: '#9370DB',
+  },
+  toggle: {
+    fontSize: 18,
+    padding: 3,
+    marginBottom: 5,
+    marginTop: 2,
   },
 })
