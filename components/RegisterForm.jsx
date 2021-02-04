@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import Auth from '../modules/auth'
 import { Button, StyleSheet, Text, View } from 'react-native'
 import { TextInput } from 'react-native-gesture-handler'
+import AsyncStorage from '@react-native-community/async-storage'
 
 const RegisterForm = ({ navigation }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [passwordconfirmation, setPasswordconfirmation] = useState('')
+  const [message, setMessage] = useState()
   const auth = new Auth({ host: 'http://localhost:3000/api' })
 
   const authenticateUser = navigation => {
@@ -15,8 +17,13 @@ const RegisterForm = ({ navigation }) => {
         email: email,
         password: password,
         password_confirmation: passwordconfirmation,
+        role: 'recipient',
       })
-      .then(() => {
+      .then(async response => {
+        await AsyncStorage.setItem(
+          'auth-storage',
+          JSON.stringify(response.headers)
+        )
         navigation.navigate('DisplayFoodBagsList')
         alert('Welcome!')
       })
@@ -24,7 +31,6 @@ const RegisterForm = ({ navigation }) => {
         setMessage(error.response.data.errors[0])
       })
   }
-
   return (
     <View style={styles.container}>
       <Text style={styles.partner}>Register here</Text>
@@ -57,12 +63,11 @@ const RegisterForm = ({ navigation }) => {
         title='Register'
         onPress={() => authenticateUser(navigation)}
       />
+      {message && <Text>{message}</Text>}
     </View>
   )
 }
-
 export default RegisterForm
-
 const styles = StyleSheet.create({
   input: {
     width: 350,
@@ -71,7 +76,7 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 8,
     color: 'white',
-    borderRadius: 14,
+    borderRadius: 13,
     fontSize: 18,
     fontWeight: '500',
   },

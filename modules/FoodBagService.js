@@ -1,12 +1,13 @@
 import axios from 'axios'
 import store from '../state/store/store'
-
+import AsyncStorage from '@react-native-community/async-storage'
 // const API_URL = 'https://git.heroku.com/weca.git'
 const API_URL = 'http://localhost:3000/api'
 const FoodBagService = {
-  async index(credentials) {
+  async index() {
+    const headers = JSON.parse(await AsyncStorage.getItem('auth-storage'))
     let response = await axios.get(API_URL + '/foodbags', {
-      headers: credentials,
+      headers: headers,
     })
     store.dispatch({
       type: 'FETCH_FOODBAG_INDEX',
@@ -14,5 +15,4 @@ const FoodBagService = {
     })
   },
 }
-
 export default FoodBagService

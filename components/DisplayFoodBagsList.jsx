@@ -6,16 +6,16 @@ import DisplayFoodBag from './DisplayFoodBag'
 import FoodBagService from '../modules/FoodBagService'
 
 const DisplayFoodBagsList = ({ navigation }) => {
-  const { foodbags, credentials } = useSelector(state => state)
+  const { foodbags } = useSelector((state) => state)
   useEffect(() => {
-    FoodBagService.index(credentials)
+    FoodBagService.index()
   }, [])
   return (
     <View style={styles.container}>
       <StatusBar style='auto' />
       <FlatList
         data={foodbags}
-        keyExtractor={item => item.id.toString()}
+        keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
           <DisplayFoodBag navigation={navigation} foodbag={item} />
         )}
