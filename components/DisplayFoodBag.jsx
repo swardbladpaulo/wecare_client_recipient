@@ -7,19 +7,12 @@ const DisplayFoodBag = ({ foodbag }) => {
   return (
     <Card>
       <Image style={styles.storeImage} source={donor1} />
-      <Card.Title style={styles.coName}>Company name</Card.Title>
+      <Card.Title style={styles.coName}>{foodbag.company_name}Company name</Card.Title>
       <Text style={styles.coAdress}>Adress</Text>
       <Text style={styles.coAdress}>ZipCode city</Text>
       <Text style={styles.foodbagInfo}>Pickup Time: {foodbag.pickuptime}</Text>
       <Text style={styles.foodbagInfo}>The bag is: {foodbag.status}</Text>    
     </Card>
-    //   <View>
-    //     <Image source={{ uri: foodbag.image }} style={styles.indexImage} />
-    //     <Text style={styles.title}>{foodbag.status}</Text>
-    //     <Text>{foodbag.pickuptime}</Text>
-    //     <Text>{foodbag.created_at}</Text>
-    //   </View>
-    //
   )
 }
 

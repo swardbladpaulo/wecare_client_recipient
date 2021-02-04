@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { View, FlatList } from 'react-native'
+import { View, FlatList, ScrollView } from 'react-native'
 import { useSelector } from 'react-redux'
 import { StatusBar } from 'expo-status-bar'
 import DisplayFoodBag from './DisplayFoodBag'
@@ -11,6 +11,8 @@ const DisplayFoodBagsList = ({ navigation }) => {
     FoodBagService.index()
   }, [])
   return (
+    
+    <ScrollView style={{ flex: 1}}>
     <View style={styles.container}>
       <StatusBar style='auto' />
       <FlatList
@@ -21,6 +23,7 @@ const DisplayFoodBagsList = ({ navigation }) => {
         )}
       />
     </View>
+    </ScrollView>
   )
 }
 
