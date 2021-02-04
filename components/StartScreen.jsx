@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
   partner: {
     fontSize: 25,
-    backgroundColor: '#baa3e8',
+    backgroundColor: '#b299e5',
     color: 'white',
     textAlign: 'center',
     fontWeight: 'bold',

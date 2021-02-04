@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Auth from '../modules/auth'
-import { Button, StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View } from 'react-native'
+import Icon from 'react-native-vector-icons/FontAwesome'
+import { Button } from 'react-native-elements'
 import { TextInput } from 'react-native-gesture-handler'
 import AsyncStorage from '@react-native-community/async-storage'
 
@@ -57,10 +59,11 @@ const RegisterForm = ({ navigation }) => {
         placeholderTextColor='white'
         onChangeText={text => setPasswordconfirmation(text)}
       />
-      <Button type="solid"
+      <Button
         style={styles.button}
-        color='#8FBC8F'
         title='Register'
+        type='solid'
+        color='#8FBC8F'
         onPress={() => authenticateUser(navigation)}
       />
       {message && <Text>{message}</Text>}
@@ -72,7 +75,7 @@ const styles = StyleSheet.create({
   input: {
     width: 350,
     height: 55,
-    backgroundColor: '#9370DB',
+    backgroundColor: '#b299e5',
     margin: 10,
     padding: 8,
     color: 'white',
@@ -84,17 +87,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  button: {
-    flexDirection: 'row',
-    height: 65,
-    backgroundColor: '#9370DB',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginTop: 40,
-    elevation: 3,
-    margin: 39,
-    borderRadius: 20,
   },
   partner: {
     fontSize: 30,

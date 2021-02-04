@@ -33,4 +33,4 @@ const FoodBagService = {
   },
 }
 
-export default FoodBagService 
+export default FoodBagService
