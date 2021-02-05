@@ -6,13 +6,13 @@ import { useDispatch } from "react-redux";
 import FoodBagService from "../modules/FoodBagService";
 // import FoodbagService from '../modules/FoodBagService'
 
-const DisplayFoodBag = ({ navigation, foodbag }) => {
+const DisplayFoodBag = ({ foodbag }) => {
   const dispatch = useDispatch();
   const [switchValue, setSwitchValue] = useState(false);
 
-  const toggleSwitch = async (foodbag, navigation) => {
+  const toggleSwitch = async (foodbag) => {
     setSwitchValue(true);
-    let response = await FoodBagService.update(foodbag, navigation);
+    let response = await FoodBagService.update(foodbag);
     //state changes according to switch
     //which will result in re-render the text
   };
@@ -31,13 +31,15 @@ const DisplayFoodBag = ({ navigation, foodbag }) => {
         <Text style={styles.foodbagInfo}>
           Pickup in the {foodbag.pickuptime}
         </Text>
-        <Text style={styles.foodbagReserve}>Reserve this bag:</Text>
-        {!switchValue && (
+        {(!switchValue && foodbag.status === 'available') && (
+          <>
+          <Text style={styles.foodbagReserve}>Reserve this bag:</Text>
           <Switch
             trackColor={{ false: "red", true: "#8FBC8F" }}
-            onValueChange={() => toggleSwitch(foodbag, navigation)}
+            onValueChange={() => toggleSwitch(foodbag)}
             value={switchValue}
           />
+          </>
         )}
 
         <Text style={styles.toggle}>

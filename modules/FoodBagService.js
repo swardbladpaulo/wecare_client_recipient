@@ -9,13 +9,14 @@ const FoodBagService = {
     let response = await axios.get(API_URL + "/foodbags", {
       headers: headers,
     });
+    debugger
     store.dispatch({
       type: "FETCH_FOODBAG_INDEX",
       payload: response.data.foodbags,
     });
   },
 
-  async update(foodbag, navigation) {
+  async update(foodbag) {
     const headers = JSON.parse(await AsyncStorage.getItem("auth-storage"));
     try {
       let response = await axios.put(
@@ -27,9 +28,8 @@ const FoodBagService = {
           headers: headers,
         }
       );
-
+      
       alert(response.data.message);
-      navigation.navigate("DisplayFoodBagsList");
     } catch (error) {
       console.log(error);
     }
