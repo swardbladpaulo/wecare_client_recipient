@@ -4,7 +4,6 @@ import { Card } from "react-native-elements";
 import donor1 from "../assets/images/donor1.png";
 import { useDispatch } from "react-redux";
 import FoodBagService from "../modules/FoodBagService";
-// import FoodbagService from '../modules/FoodBagService'
 
 const DisplayFoodBag = ({ foodbag }) => {
   const dispatch = useDispatch();
