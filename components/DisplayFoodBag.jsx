@@ -24,16 +24,16 @@ const DisplayFoodBag = ({ foodbag }) => {
         <Card.Title style={styles.coName}>
           {foodbag.company_name}Company name
         </Card.Title>
-        <Text style={styles.coAdress}>Adress</Text>
-        <Text style={styles.coAdress}>ZipCode City</Text>
+        <Text style={styles.coAdress}>{foodbag.adress}Adress</Text>
+        <Text style={styles.coAdress}>{foodbag.zipcode}{foodbag.city}ZipCode City</Text>
         <Card.Divider />
-        <Text style={styles.foodbagInfo}>This bag is {foodbag.status}</Text>
+        {/* <Text style={styles.foodbagInfo}>This bag is {foodbag.status}</Text> */}
         <Text style={styles.foodbagInfo}>
           Pickup in the {foodbag.pickuptime}
         </Text>
         {(!switchValue && foodbag.status === 'available') && (
           <>
-          <Text style={styles.foodbagReserve}>Reserve this bag:</Text>
+          <Text style={styles.foodbagReserve}>Reserve this bag</Text>
           <Switch
             trackColor={{ false: "red", true: "#8FBC8F" }}
             onValueChange={() => toggleSwitch(foodbag)}
@@ -43,7 +43,7 @@ const DisplayFoodBag = ({ foodbag }) => {
         )}
 
         <Text style={styles.toggle}>
-          {switchValue && 'This foodbag is already reserved'}
+          {switchValue && 'You foodbag is reserved'}
         </Text>
       </Card>
     </SafeAreaView>
