@@ -54,7 +54,7 @@ const RegisterForm = ({ navigation }) => {
       <TextInput
         style={styles.input}
         placeholder='Password confirmation:'
-        secureTextEntry={true}
+        // secureTextEntry={true}
         autoCapitalize='none'
         placeholderTextColor='white'
         onChangeText={text => setPasswordconfirmation(text)}

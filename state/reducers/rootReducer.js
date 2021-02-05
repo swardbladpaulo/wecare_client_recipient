@@ -21,6 +21,11 @@ const rootReducer = (state, action) => {
         ...state,
         foodbags: action.payload,
       }
+      case 'SET_DONOR_DATA':
+      return {
+                ...state,
+        foodbags: action.payload,
+      }
     default:
       return state
   }

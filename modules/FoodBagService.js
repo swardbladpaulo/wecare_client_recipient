@@ -9,7 +9,6 @@ const FoodBagService = {
     let response = await axios.get(API_URL + "/foodbags", {
       headers: headers,
     });
-    debugger
     store.dispatch({
       type: "FETCH_FOODBAG_INDEX",
       payload: response.data.foodbags,

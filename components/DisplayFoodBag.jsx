@@ -1,43 +1,44 @@
-import React, { useState } from "react";
-import { Image, StyleSheet, Text, Switch, SafeAreaView } from "react-native";
-import { Card } from "react-native-elements";
-import donor1 from "../assets/images/donor1.png";
-import { useDispatch } from "react-redux";
-import FoodBagService from "../modules/FoodBagService";
+import React, { useEffect, useState } from 'react'
+import { Image, StyleSheet, Text, Switch, SafeAreaView } from 'react-native'
+import { Card } from 'react-native-elements'
+import FoodBagService from '../modules/FoodBagService'
+import DonorService from '../modules/DonorService'
 
-const DisplayFoodBag = ({ foodbag }) => {
-  const dispatch = useDispatch();
-  const [switchValue, setSwitchValue] = useState(false);
+const DisplayFoodBag = ({ foodbag, id }) => {
+  const [switchValue, setSwitchValue] = useState(false)
 
-  const toggleSwitch = async (foodbag) => {
-    setSwitchValue(true);
-    let response = await FoodBagService.update(foodbag);
-    //state changes according to switch
-    //which will result in re-render the text
-  };
+  useEffect(() => {
+    DonorService.show(id)
+  }, [])
+
+  const toggleSwitch = async foodbag => {
+    setSwitchValue(true)
+    let response = await FoodBagService.update(foodbag)
+  }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Card>
-        <Image style={styles.storeImage} source={donor1} />
+        <Image style={styles.storeImage} source={foodbag.donor.image} />
         <Card.Title style={styles.coName}>
-          {foodbag.company_name}Company name
+          {foodbag.donor.company_name}
         </Card.Title>
-        <Text style={styles.coAdress}>{foodbag.adress}Adress</Text>
-        <Text style={styles.coAdress}>{foodbag.zipcode}{foodbag.city}ZipCode City</Text>
+        <Text style={styles.coAdress}>{foodbag.donor.adress}</Text>
+        <Text style={styles.coAdress}>
+          {foodbag.donor.zipcode} {foodbag.donor.city}
+        </Text>
         <Card.Divider />
-        {/* <Text style={styles.foodbagInfo}>This bag is {foodbag.status}</Text> */}
         <Text style={styles.foodbagInfo}>
           Pickup in the {foodbag.pickuptime}
         </Text>
-        {(!switchValue && foodbag.status === 'available') && (
+        {!switchValue && foodbag.status === 'available' && (
           <>
-          <Text style={styles.foodbagReserve}>Reserve this bag</Text>
-          <Switch
-            trackColor={{ false: "red", true: "#8FBC8F" }}
-            onValueChange={() => toggleSwitch(foodbag)}
-            value={switchValue}
-          />
+            <Text style={styles.foodbagReserve}>Reserve this bag</Text>
+            <Switch
+              trackColor={{ false: 'red', true: '#8FBC8F' }}
+              onValueChange={() => toggleSwitch(foodbag)}
+              value={switchValue}
+            />
           </>
         )}
 
@@ -46,10 +47,10 @@ const DisplayFoodBag = ({ foodbag }) => {
         </Text>
       </Card>
     </SafeAreaView>
-  );
-};
+  )
+}
 
-export default DisplayFoodBag;
+export default DisplayFoodBag
 
 const styles = StyleSheet.create({
   storeImage: {
@@ -73,13 +74,13 @@ const styles = StyleSheet.create({
   },
   foodbagReserve: {
     fontSize: 20,
-    color: "#9370DB",
+    color: '#9370DB',
     marginBottom: 5,
-    fontWeight: "bold",
+    fontWeight: 'bold',
   },
   pickuptime: {
     fontSize: 20,
-    color: "#9370DB",
+    color: '#9370DB',
   },
   toggle: {
     fontSize: 18,
@@ -87,4 +88,4 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     marginTop: 2,
   },
-});
+})
