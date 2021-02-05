@@ -1,21 +1,21 @@
-import React, { useState } from 'react'
-import { Image, StyleSheet, Text, Switch, SafeAreaView } from 'react-native'
-import { Card } from 'react-native-elements'
-import donor1 from '../assets/images/donor1.png'
-import { useDispatch } from 'react-redux'
+import React, { useState } from "react";
+import { Image, StyleSheet, Text, Switch, SafeAreaView } from "react-native";
+import { Card } from "react-native-elements";
+import donor1 from "../assets/images/donor1.png";
+import { useDispatch } from "react-redux";
+import FoodBagService from "../modules/FoodBagService";
 // import FoodbagService from '../modules/FoodBagService'
 
-const DisplayFoodBag = ({ foodbag }) => {
-  const dispatch = useDispatch()
-  const [switchValue, setSwitchValue] = useState(false)
+const DisplayFoodBag = ({ navigation, foodbag }) => {
+  const dispatch = useDispatch();
+  const [switchValue, setSwitchValue] = useState(false);
 
-  const toggleSwitch = foodbag => {
-    // FoodbagService(foodbag, dispatch)
-    //onValueChange of the switch this function will be called
-    setSwitchValue(foodbag)
+  const toggleSwitch = async (foodbag, navigation) => {
+    setSwitchValue(true);
+    let response = await FoodBagService.update(foodbag, navigation);
     //state changes according to switch
     //which will result in re-render the text
-  }
+  };
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -32,20 +32,23 @@ const DisplayFoodBag = ({ foodbag }) => {
           Pickup in the {foodbag.pickuptime}
         </Text>
         <Text style={styles.foodbagReserve}>Reserve this bag:</Text>
-        <Switch
-          trackColor={{ false: 'red', true: '#8FBC8F' }}
-          onValueChange={toggleSwitch}
-          value={switchValue}
-        />
+        {!switchValue && (
+          <Switch
+            trackColor={{ false: "red", true: "#8FBC8F" }}
+            onValueChange={() => toggleSwitch(foodbag, navigation)}
+            value={switchValue}
+          />
+        )}
+
         <Text style={styles.toggle}>
-          {switchValue ? 'Your bag has been reserved' : ''}
+          {switchValue && 'This foodbag is already reserved'}
         </Text>
       </Card>
     </SafeAreaView>
-  )
-}
+  );
+};
 
-export default DisplayFoodBag
+export default DisplayFoodBag;
 
 const styles = StyleSheet.create({
   storeImage: {
@@ -69,13 +72,13 @@ const styles = StyleSheet.create({
   },
   foodbagReserve: {
     fontSize: 20,
-    color: '#9370DB',
+    color: "#9370DB",
     marginBottom: 5,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   pickuptime: {
     fontSize: 20,
-    color: '#9370DB',
+    color: "#9370DB",
   },
   toggle: {
     fontSize: 18,
@@ -83,4 +86,4 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     marginTop: 2,
   },
-})
+});
