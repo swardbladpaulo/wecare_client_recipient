@@ -38,6 +38,7 @@ const App = () => {
         <Tab.Screen name='StartScreen' component={StartScreen} />
         <Tab.Screen
           name='DisplayFoodBagsList'
+          iconName='bag-outline'
           component={DisplayFoodBagsList}
         />
         <Stack.Screen name='RegisterForm' component={RegisterForm} />

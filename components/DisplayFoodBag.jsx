@@ -13,13 +13,14 @@ const DisplayFoodBag = ({ foodbag, id }) => {
 
   const toggleSwitch = async foodbag => {
     setSwitchValue(true)
+    debugger
     let response = await FoodBagService.update(foodbag)
   }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Card>
-        <Image style={styles.storeImage} source={foodbag.donor.image} />
+        <Image style={styles.storeImage} src={foodbag.donor.image} />
         <Card.Title style={styles.coName}>
           {foodbag.donor.company_name}
         </Card.Title>
