@@ -1,26 +1,20 @@
-import React, { useEffect, useState } from 'react'
-import { Image, StyleSheet, Text, Switch, SafeAreaView } from 'react-native'
+import React, { useState } from 'react'
+import { StyleSheet, Text, Switch, SafeAreaView } from 'react-native'
 import { Card } from 'react-native-elements'
 import FoodBagService from '../modules/FoodBagService'
-import DonorService from '../modules/DonorService'
 
 const DisplayFoodBag = ({ foodbag, id }) => {
   const [switchValue, setSwitchValue] = useState(false)
 
-  useEffect(() => {
-    DonorService.show(id)
-  }, [])
-
   const toggleSwitch = async foodbag => {
     setSwitchValue(true)
-    debugger
     let response = await FoodBagService.update(foodbag)
   }
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
       <Card>
-        <Image style={styles.storeImage} src={foodbag.donor.image} />
+        <Card.Image style={styles.storeImage} source={{uri: foodbag.donor.image}} />
         <Card.Title style={styles.coName}>
           {foodbag.donor.company_name}
         </Card.Title>
@@ -44,7 +38,7 @@ const DisplayFoodBag = ({ foodbag, id }) => {
         )}
 
         <Text style={styles.toggle}>
-          {switchValue && 'You foodbag is reserved'}
+          {switchValue && 'Your foodbag is reserved'}
         </Text>
       </Card>
     </SafeAreaView>

@@ -11,7 +11,6 @@ const DonorService = {
       let response = await axios.get(API_URL + `/user/${id}`, {
         headers: headers,
       })
-      debugger
       store.dispatch({
         type: 'SET_DONOR_DATA',
         payload: response.data.donor,
